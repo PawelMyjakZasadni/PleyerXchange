@@ -10,20 +10,20 @@
 <body>
   <!-- Nawigacja -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Strona główna</a>
+    <a class="navbar-brand" href="<?= site_url('Home') ?>">Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('twojklub') ?>">Twój klub</a>
+          <a class="nav-link" >Twój klub</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
+          <a class="nav-link" >Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
+          <a class="nav-link" >Oferty</a>
         </li>
       </ul>
     </div>
@@ -34,7 +34,7 @@
 
   <!-- Treść strony -->
   <div class="container">
-    <h1>Witaj na stronie głównej!</h1>
+    <h1>aby przeglądać strone główną zaloguj się </h1>
 
     <!-- Treść dla podstrony "Twój klub" -->
     <div id="twój-klub" class="subpage-content">
@@ -51,7 +51,7 @@
     <!-- Treść dla podstrony "Oferty" -->
     <div id="oferty" class="subpage-content">
       <h2>Oferty</h2>
-      <p>brak nowych ofert .</p>
+      <p>aby były ofertyy zzaloguj się .</p>
     </div>
   </div>
 

@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 //DODANIE ROUTINGU DLA KONTROLLERA REJESTRACJA
 $routes->get('regs', 'Regs::index');
 $routes->get('/login', 'Login::index');
+$routes->get('/wyloguj', 'wyloguj::logout');
 
 
 /*

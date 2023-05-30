@@ -10,7 +10,7 @@
 <body>
   <!-- Nawigacja -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="Home">Strona główna</a>
+    <a class="navbar-brand" href="<?= site_url('sesja') ?>">Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,21 +28,32 @@
       </ul>
     </div>
     <div class="ml-auto">
-    <a class="btn btn-primary" href="<?= site_url('wyloguj') ?>">wyloguj sie </a>
+      <a class="btn btn-primary" href="<?= site_url('wyloguj') ?>">wyloguj sie </a>
     </div>
   </nav>
 
-  <?php if (!empty($dane)) : ?>
-        <ul>
-            <?php foreach ($dane as $rekord) : ?>
-                <li><?= $rekord['nazwa_klubu'] ?> </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else : ?>
-        <p>Brak danych do wyświetlenia.</p>
-    <?php endif; ?>
-    
- 
+  <!-- Treść strony -->
+  <div class="container">
+    <h1>o witamy zalogowy urzytkowniku</h1>
+
+    <!-- Treść dla podstrony "Twój klub" -->
+    <div id="twój-klub" class="subpage-content">
+      <h2>Twój klub</h2>
+      <p>  tu sie snajduje twój klub </p>
+    </div>
+
+    <!-- Treść dla podstrony "Inne kluby" -->
+    <div id="inne-kluby" class="subpage-content">
+      <h2>Inne kluby</h2>
+      <p>Tutaj znajduje się ilość klubów w serwisie  4   </p>
+    </div>
+
+    <!-- Treść dla podstrony "Oferty" -->
+    <div id="oferty" class="subpage-content">
+      <h2>Oferty</h2>
+      <p>0 ofert  .</p>
+    </div>
+  </div>
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

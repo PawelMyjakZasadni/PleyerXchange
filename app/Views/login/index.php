@@ -35,6 +35,7 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Zaloguj się</button>
                             </div>
+                            <a class="btn btn-primary" href="<?= site_url('Regs') ?>">rejestracja</a>
                         </form>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
 <body>
   <!-- Nawigacja -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="<?= site_url('Home') ?>">Strona główna</a>
+    <a class="navbar-brand" href="#">Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,12 +23,12 @@
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Oferty</a>
+          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
         </li>
       </ul>
     </div>
     <div class="ml-auto">
-      <a class="btn btn-primary" href="#">Wyloguj się</a>
+    <a class="btn btn-primary" href="<?= site_url('wyloguj') ?>">wyloguj sie </a>
     </div>
   </nav>
 

@@ -11,41 +11,49 @@ class Login extends BaseController
 {
     $data = [];
 
-    if ($this->request->getMethod() === 'post') {
-        // Walidacja danych wejściowych
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'email' => 'required|valid_email',
-            'password' => 'required'
-        ]);
+        if ($this->request->getMethod() === 'post') {
+            // Walidacja danych logowania
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'email' => 'required|valid_email',
+                'password' => 'required'
+            ]);
 
-        if ($validation->withRequest($this->request)->run()) {
-            // Pomyślna walidacja, sprawdzamy dane logowania
-            $userModel = new Users();
+            if ($validation->withRequest($this->request)->run()) {
+                // Pobranie danych logowania z formularza
+                $email = $this->request->getPost('email');
+                $password = $this->request->getPost('password');
 
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
+                // Sprawdzenie poprawności danych logowania
+                $userModel = new Users();
+                $user = $userModel->where('email', $email)->first();
 
-            $user = $userModel->where('email', $email)->first();
+                if ($user && password_verify($password, $user['password'])) {
+                    // Poprawne uwierzytelnienie użytkownika, ustawienie sesji
+                    $session = session();
+                    $sessionData = [
+                        'user_id' => $user['id'],
+                        'email' => $user['email'],
+                        // Dodaj inne dane sesji, jeśli są potrzebne
+                    ];
+                    $session->set($sessionData);
 
-            if ($user && password_verify($password, $user['password'])) {
-                // Poprawne dane logowania, zaloguj użytkownika
-                // Możesz zaimplementować mechanizm sesji lub inną formę uwierzytelniania
-
-                // Przekierowanie po pomyślnym zalogowaniu
-                return redirect()->to('/Home');
+                     // Przekierowanie po pomyślnym zalogowaniu
+                         return redirect()->to('sesja/index');
+                } else {
+                    // Błędne dane logowania
+                    $data['error'] = 'Nieprawidłowy email lub hasło.';
+                }
             } else {
-                // Niepoprawne dane logowania
-                $data['error'] = 'Nieprawidłowy email lub hasło';
+                // Błąd walidacji, przekazanie błędów do widoku
+                $data['validation'] = $validation->getErrors();
             }
-        } else {
-            // Błąd walidacji, przekazujemy błędy do widoku
-            $data['validation'] = $validation->getErrors();
         }
-    }
 
-    // Wyświetlenie formularza logowania
+       // Wyświetlenie formularza logowania
     return view('login/index', $data);
+    }
 }
-}
+
+
 
