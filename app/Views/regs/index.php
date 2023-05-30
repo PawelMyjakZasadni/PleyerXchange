@@ -1,45 +1,41 @@
-<?php
-/**
- * @var \CodeIgniter\View\View $this
- *
- */
+<!-- app/Views/register.php -->
 
-$this->extend('template');
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rejestracja</title>
+</head>
+<body>
+    <h1>Rejestracja</h1>
 
-?>
-
-<?php $this->section('content')?>
-
-<?= form_open(current_url(), ['method'=>'post'])?>
-
-
-    <div class=" --bs-body-bg">
-        <div class="w-25  position-absolute top-50 start-50 translate-middle p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 " >
-            <h3 class="text-center"> Create an account</h3>
-            <input class="form-control " type="text" placeholder="username"></input><br>
-            <input class="form-control " type="password" placeholder="password"></input><br>
-            <input class="form-control " type="password" placeholder=" Repeat password"></input><br>
-            <input class="form-control btn btn-primary" type="submit" value="Create account"></input> <br> <br>
-            <?= form_submit('submit', 'Submit', ['class' => 'btn btn-primary'])?>
+    <?php if (isset($validation)): ?>
+        <div class="errors">
+            <?php foreach ($validation as $error): ?>
+                <p><?= $error ?></p>
+            <?php endforeach; ?>
         </div>
-    </div>
-    </body>
+    <?php endif; ?>
 
-
-
-<!--<div class="form-group">-->
-<!--    --><?php //= form_label('Login', 'login', ['for'=>'login', 'class' => 'control-label']) ?>
-<!--    --><?php //= form_input('Login', '', ['class' => 'form-control']) ?>
-<!--</div>-->
-<!--    <div class="form-group">-->
-<!--        --><?php //= form_label('Password', 'password', ['for'=>'password', 'class' => 'control-label']) ?>
-<!--        --><?php //= form_input('password', '', ['class' => 'form-control'], 'password') ?>
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--        --><?php //= form_label('Repeat password', 'repeat-password', ['for'=>'repeat-password', 'class' => 'control-label']) ?>
-<!--        --><?php //= form_input('repeat_password', '', ['class' => 'form-control'], 'password') ?>
-<!--    </div>-->
-<?php //= form_submit('submit', 'Submit', ['class' => 'btn btn-primary'])?>
-<?= form_close()?>
-
-<?php $this->endSection()?>
+    <form method="post" action="<?= base_url('Regs') ?>">
+        <div>
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" name="name" id="name" value="" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="" required>
+        </div>
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <label for="confirm_password">Potwierdź hasło:</label>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+        </div>
+        <div>
+            <button type="submit">Zarejestruj się</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -8,37 +8,44 @@ use App\Models\Users;
 
 class Regs extends BaseController
 {
+   
     public function index()
-    {
+{
+    $data = [];
 
-        if(session('isLoggedIn'))
-        {
-            return redirect()->to('/template');
-        }
+    if ($this->request->getMethod() === 'post') {
+        // Walidacja danych wejściowych
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'name' => 'required',
+            'email' => 'required|valid_email|is_unique[users.email]',
+            'password' => 'required|min_length[8]',
+            'confirm_password' => 'required|matches[password]'
+        ]);
 
-        $db = \Config\Database::connect();
-        d($db->query('show databases')->getResultArray());
-        helper('form');
-
-        if($this->request->getMethod() === 'post')
-        {
-            /** @var Users $users */
-            $users = model('Users');
+        if ($validation->withRequest($this->request)->run()) {
+            // Pomyślna walidacja, dodajemy użytkownika do bazy danych
+            $userModel = new Users();
 
             $user = [
-                'login' => $this->request->getPost('login'),
-                'password' => $this->request->getPost('password'),
+                'name' => $this->request->getPost('name'),
+                'email' => $this->request->getPost('email'),
+                'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
             ];
-            
-            $usersModel = new users(); // Create an instance of the users class
-            
-            if (!$usersModel->save($user)) { // Assuming "save" is a method in the users class
-                return redirect()->back()->withInput()->with('errors', $usersModel->errors());
-            }
-            
-            return redirect()->to('login')->with('message', 'Użytkownik został utworzony');
-        }
 
-        return view('regs/index');
+            $userModel->insert($user);
+
+            // Przekierowanie po pomyślnej rejestracji
+            return redirect()->to('login/index');
+        } else {
+            // Błąd walidacji, przekazujemy błędy do widoku
+            $data['validation'] = $validation->getErrors();
+        }
     }
+
+    // Wyświetlenie formularza rejestracji
+    return view('regs/index', $data);
 }
+
+}
+
