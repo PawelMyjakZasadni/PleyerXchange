@@ -8,50 +8,44 @@ use App\Models\Users;
 class Login extends BaseController
 {
     public function index()
-    {
-        helper('form');
+{
+    $data = [];
 
-        if($this->request->getMethod() === 'post')
-        {
-            /** @var Users $repository */
-            $repository = model('Users');
+    if ($this->request->getMethod() === 'post') {
+        // Walidacja danych wejściowych
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'email' => 'required|valid_email',
+            'password' => 'required'
+        ]);
 
-            $user = $repository->where(
-                'login', $this->request->getPost('login')
-            )->first();
+        if ($validation->withRequest($this->request)->run()) {
+            // Pomyślna walidacja, sprawdzamy dane logowania
+            $userModel = new Users();
 
-            if(
-                !$user ||
-                !password_verify($this->request->getPost('password'), $user['password'])
-            ){
-                return redirect()
-                    ->to('/login')
-                    ->withInput()
-                    ->with('errors', 'Błędne hasło');
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+
+            $user = $userModel->where('email', $email)->first();
+
+            if ($user && password_verify($password, $user['password'])) {
+                // Poprawne dane logowania, zaloguj użytkownika
+                // Możesz zaimplementować mechanizm sesji lub inną formę uwierzytelniania
+
+                // Przekierowanie po pomyślnym zalogowaniu
+                return redirect()->to('/Home');
+            } else {
+                // Niepoprawne dane logowania
+                $data['error'] = 'Nieprawidłowy email lub hasło';
             }
-
-            $session = Service::session();
-            $session->set('isLoggedIn', true);
-            $session->set('userData', [
-                'id' => $user['id'],
-                'login' => $user['login'],
-            ]);
-
-            return redirect()->to('/Home');
+        } else {
+            // Błąd walidacji, przekazujemy błędy do widoku
+            $data['validation'] = $validation->getErrors();
         }
-
-        return view('login/index');
     }
 
-    public function logout(){
-
-        $session = Service::session();
-        $session->destroy();
-
-        return redirect()
-            ->to('/login')
-            ->withInput()
-            ->with('message', 'Wylogowano.');
-    }
-
+    // Wyświetlenie formularza logowania
+    return view('login/index', $data);
 }
+}
+

@@ -1,41 +1,46 @@
-<?php
-/**
- * @var \CodeIgniter\View\View $this
- *
- */
+<!-- app/Views/login.php -->
 
-$this->extend('template');
-
-?>
-
-<?php $this->section('content')?>
-
-<?= form_open(current_url(), ['method'=>'post'])?>
-
-
-
-    <div class=" --bs-body-bg">
-        <div class="w-25  position-absolute top-50 start-50 translate-middle p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 " >
-            <h3 class="text-center"> Login </h3>
-            <input class="form-control " type="text" placeholder="username"></input><br>
-            <input class="form-control " type="password" placeholder="password"></input><br>
-<!--            <label ><input class=" form-check-input text-left" type="checkbox" > Remember me</input></label><br>-->
-            <input class="form-control btn btn-primary" type="submit" value="login"></input> <br> <br>
-            <?= form_submit('submit', 'Submit', ['class' => 'btn btn-primary'])?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Login</h3>
+                        <?php if (isset($error)): ?>
+                            <p class="text-danger"><?= $error ?></p>
+                        <?php endif; ?>
+                        <?php if (isset($validation)): ?>
+                            <div class="text-danger">
+                                <?php foreach ($validation as $error): ?>
+                                    <p><?= $error ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                        <form method="post" action="<?= base_url('login') ?>">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" name="email" id="email" value="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Hasło:</label>
+                                <input type="password" class="form-control" name="password" id="password" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Zaloguj się</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-<!--    <div class="form-group">-->
-<!--        --><?php //= form_label('Login', 'login', ['for'=>'login', 'class' => 'control-label']) ?>
-<!--        --><?php //= form_input('Login', '', ['class' => 'form-control']) ?>
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--        --><?php //= form_label('Password', 'password', ['for'=>'password', 'class' => 'control-label']) ?>
-<!--        --><?php //= form_input('password', '', ['class' => 'form-control'], 'password') ?>
-<!--    </div>-->
-<?php //= form_submit('submit', 'Submit', ['class' => 'btn btn-primary'])?>
-<?= form_close()?>
-
-<?php $this->endSection()?>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
