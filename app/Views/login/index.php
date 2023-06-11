@@ -1,4 +1,4 @@
-<!-- app/Views/login.php -->
+
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,9 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Zaloguj się</button>
                             </div>
-                            <a class="btn btn-primary" href="<?= site_url('Regs') ?>">rejestracja</a>
+                            <div class="text-center">
+                                <a class="btn btn-primary" href="<?= site_url('Regs') ?>">Rejestracja</a>
+                            </div>
                         </form>
                     </div>
                 </div>
