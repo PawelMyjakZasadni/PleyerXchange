@@ -22,7 +22,7 @@
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
         </li>
       </ul>
     </div>
@@ -37,7 +37,7 @@
     </div>
   </nav>
 
-  <h1>Składanie oferty</h1>
+  <h1>edytowanie oferty</h1>
 
 <?php if (isset($validation)): ?>
     <div class="errors">
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Złóż ofertę</button>
+        <button type="submit" class="btn btn-primary"> edytuj ofertę</button>
     </div>
 </form>
 

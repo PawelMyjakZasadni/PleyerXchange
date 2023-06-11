@@ -24,7 +24,7 @@
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
+          <a class="nav-link" href="<?= site_url('ofert/wofert') ?>">Oferty</a>
         </li>
       </ul>
     </div>

@@ -7,12 +7,11 @@
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 </head>
 <body>
   <!-- Nawigacja -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="<?= site_url('sesja') ?>">Strona główna</a>
+    <a class="navbar-brand" href=<?= site_url('sesja') ?>>Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,7 +24,7 @@
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
         </li>
       </ul>
     </div>
@@ -37,33 +36,43 @@
   <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
   <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
   </div>
-</div>
-
-
+    </div>
   </nav>
 
-  <!-- Treść strony -->
-  <div class="container">
-    <h1>o witamy zalogowy urzytkowniku</h1>
 
-    <!-- Treść dla podstrony "Twój klub" -->
-    <div id="twój-klub" class="subpage-content">
-      <h2>Twój klub</h2>
-      <p> stwórz twój klub <button><a class="nav-link" href="<?= site_url('twojklub') ?>">Twój klub</a></button> </p>
-    </div>
+    <h1>Wypisanie danych</h1>
 
-    <!-- Treść dla podstrony "Inne kluby" -->
-    <div id="inne-kluby" class="subpage-content">
-      <h2>Inne kluby</h2>
-      <p>Tutaj znajduje się ilość klubów w serwisie  5   </p>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>clob_name</th>
+                <th>Manager</th>
+                <th>price</th>
+                <th>rental_period</th>
+                <th>submitter</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($dane as $row): ?>
+            <tr>
+                <th><?= $row['id'] ?></th>
+                <td><?= $row['club_name'] ?></td>
+                <td><?= $row['manager'] ?></td>
+                <td><?= $row['price'] ?></td>
+                <td><?= $row['rental_period'] ?></td>
+                <td><?= $row['submitter'] ?></td>
+                <td>
+                    <a href="<?= site_url('ofert/edit/' . $row['id']) ?>">Edytuj</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-    <!-- Treść dla podstrony "Oferty" -->
-    <div id="oferty" class="subpage-content">
-      <h2>Oferty</h2>
-      <p><p> stwórz oferte  <button><a class="nav-link" href="<?= site_url('ofert') ?>">craeate ofert </a></button> </p></p>
-    </div>
-  </div>
+
+ 
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

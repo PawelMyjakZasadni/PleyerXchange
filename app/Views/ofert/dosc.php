@@ -1,16 +1,14 @@
+<!-- app/Views/offer_form.php -->
+
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strona główna</title>
-  <!-- Dodaj link do CSS Bootstrap -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Składanie oferty</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-  <!-- Nawigacja -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href=<?= site_url('sesja') ?>>Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,7 +22,7 @@
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+          <a class="nav-link" href="<?= site_url('ofert') ?>">Oferty</a>
         </li>
       </ul>
     </div>
@@ -36,23 +34,10 @@
   <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
   <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
   </div>
+    </div>
   </nav>
 
-  <?php if (!empty($dane)) : ?>
-        <ul>
-            <?php foreach ($dane as $rekord) : ?>
-                <li><?= $rekord['nazwa_klubu'] ?> </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else : ?>
-        <p>Brak danych do wyświetlenia.</p>
-    <?php endif; ?>
-    
- 
+  <h1>kiedyś sie edytują </h1>
 
-  <!-- Dodaj skrypty Bootstrap JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

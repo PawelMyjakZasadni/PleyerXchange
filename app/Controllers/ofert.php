@@ -46,7 +46,20 @@ class ofert extends BaseController
         // Wyświetlenie formularza składania oferty
         return view('ofert/index', $data);
     }
+        public function wofert()
+     {
+     $daneModel = new ofertt();
 
+     // Pobierz dane z bazy danych
+     $dane = $daneModel->findAll();
 
+     $data['dane'] = $dane;
 
+        return view('ofert/wofert', $data); 
+    }
+
+    public function edit()
+    {
+       return view('ofert/dosc'); 
+   }
 }
