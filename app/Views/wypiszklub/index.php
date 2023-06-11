@@ -39,42 +39,37 @@
     </div>
   </nav>
 
-  <div class="container">
-    <h1>Formularz</h1>
-    <form action="<?= site_url('twojklub') ?>" method="post">
-    <div class="mb-3">
-        <label for="rokZalozenia">Rok założenia:</label>
-        <input type="number" class="form-control" id="rok_zalozenia" name="rok_zalozenia" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="menedzer">Menedżer:</label>
-        <input type="text" class="form-control" id="menedzer" name="menedzer" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="pracownicy">Pracownicy:</label>
-        <input type="text" class="form-control" id="pracownicy" name="pracownicy" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-         <label for="pilkarze">Piłkarze:</label>
-        <input type="text" class="form-control" id="pilkarze" name="pilkarze" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    </div>
-      <button type="submit" class="btn btn-primary">Zapisz</button>
-    </form>
-  </div>
-  
+
+    <h1>Wypisanie danych</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Rok założenia</th>
+                <th>Manager</th>
+                <th>Pracownicy</th>
+                <th>Piłkarze</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($dane as $row): ?>
+            <tr>
+                <th><?= $row['id'] ?></th>
+                <td><?= $row['rok_zalozenia'] ?></td>
+                <td><?= $row['menedzer'] ?></td>
+                <td><?= $row['pracownicy'] ?></td>
+                <td><?= $row['pilkarze'] ?></td>
+                <td>
+                    <a href="<?= site_url('wypiszklub/edycja/' . $row['id']) ?>">Edytuj</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+
  
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->

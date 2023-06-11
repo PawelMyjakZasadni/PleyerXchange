@@ -6,6 +6,8 @@
   <title>Strona główna</title>
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body>
   <!-- Nawigacja -->
@@ -17,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('twojklub') ?>">Twój klub</a>
+          <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -27,9 +29,17 @@
         </li>
       </ul>
     </div>
-    <div class="ml-auto">
-      <a class="btn btn-primary" href="<?= site_url('wyloguj') ?>">wyloguj sie </a>
-    </div>
+    <div class="dropdown ml-auto">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-ellipsis-h"></i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
+  <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
+  </div>
+</div>
+
+
   </nav>
 
   <!-- Treść strony -->
@@ -39,7 +49,7 @@
     <!-- Treść dla podstrony "Twój klub" -->
     <div id="twój-klub" class="subpage-content">
       <h2>Twój klub</h2>
-      <p>  tu sie snajduje twój klub </p>
+      <p> stwórz twój klub <button><a class="nav-link" href="<?= site_url('twojklub') ?>">Twój klub</a></button> </p>
     </div>
 
     <!-- Treść dla podstrony "Inne kluby" -->

@@ -34,6 +34,7 @@ $routes->get('/', 'Home::index');
 $routes->get('regs', 'Regs::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/wyloguj', 'wyloguj::logout');
+$routes->get('wypiszklub/edytcja/(:num)', 'wypiszklub::edycja/$1');
 
 
 /*

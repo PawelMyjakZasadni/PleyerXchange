@@ -36,7 +36,7 @@ class ofert extends BaseController
                 $offerModel->insert($data);
 
                 // Przekierowanie po zapisaniu oferty
-                return redirect()->to('/home');
+                return redirect()->to('/sesja');
             } else {
                 // Błąd walidacji, przekazujemy błędy do widoku
                 $data['validation'] = $validation->getErrors();

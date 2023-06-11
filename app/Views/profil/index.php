@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strona główna</title>
+  <title>Mój Profil</title>
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -11,7 +11,7 @@
 <body>
   <!-- Nawigacja -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href=<?= site_url('sesja') ?>>Strona główna</a>
+    <a class="navbar-brand" href="<?= site_url('sesja') ?>">Strona główna</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,47 +36,19 @@
   <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
   <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
   </div>
-    </div>
   </nav>
 
+  <!-- Treść strony -->
   <div class="container">
-    <h1>Formularz</h1>
-    <form action="<?= site_url('twojklub') ?>" method="post">
-    <div class="mb-3">
-        <label for="rokZalozenia">Rok założenia:</label>
-        <input type="number" class="form-control" id="rok_zalozenia" name="rok_zalozenia" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-5 text-center">
+        <i class="fas fa-user fa-3x"></i>
+        <h5 class="card-title"><?php echo $name; ?></h5>
+            <p class="card-text"><?php echo $email; ?></p>
+            <a href="<?php echo site_url('edycjaprof'); ?>" class="btn btn-primary">Edytuj dane</a>
+      </div>
     </div>
-    <div class="mb-3">
-    <label for="menedzer">Menedżer:</label>
-        <input type="text" class="form-control" id="menedzer" name="menedzer" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="pracownicy">Pracownicy:</label>
-        <input type="text" class="form-control" id="pracownicy" name="pracownicy" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-         <label for="pilkarze">Piłkarze:</label>
-        <input type="text" class="form-control" id="pilkarze" name="pilkarze" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    </div>
-      <button type="submit" class="btn btn-primary">Zapisz</button>
-    </form>
   </div>
-  
- 
-
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

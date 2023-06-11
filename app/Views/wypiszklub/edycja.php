@@ -42,39 +42,27 @@
   <div class="container">
     <h1>Formularz</h1>
     <form action="<?= site_url('twojklub') ?>" method="post">
-    <div class="mb-3">
+      <div class="form-group">
         <label for="rokZalozenia">Rok założenia:</label>
-        <input type="number" class="form-control" id="rok_zalozenia" name="rok_zalozenia" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="menedzer">Menedżer:</label>
+        <input type="number" class="form-control" id="rokZalozenia" name="rokZalozenia" required>
+      </div>
+      <div class="form-group">
+        <label for="menedzer">Menedżer:</label>
         <input type="text" class="form-control" id="menedzer" name="menedzer" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="pracownicy">Pracownicy:</label>
+      </div>
+      <div class="form-group">
+        <label for="pracownicy">Pracownicy:</label>
         <input type="text" class="form-control" id="pracownicy" name="pracownicy" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-         <label for="pilkarze">Piłkarze:</label>
+      </div>
+      <div class="form-group">
+        <label for="pilkarze">Piłkarze:</label>
         <input type="text" class="form-control" id="pilkarze" name="pilkarze" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    </div>
-      <button type="submit" class="btn btn-primary">Zapisz</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Edytuj</button>
     </form>
   </div>
-  
+
+
  
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
