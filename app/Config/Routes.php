@@ -38,7 +38,8 @@ $routes->get('wypiszklub/edytcja/(:num)', 'wypiszklub::edycja/$1');
 $routes->get('ofert/wofert/', 'ofert::wofert');
 $routes->get('ofert/edit/(:num)', 'ofert::edit/$1');
 
-
+// players data
+$routes->get('players','playerscontroller::index');
 
 /*
  * --------------------------------------------------------------------

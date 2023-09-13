@@ -23,6 +23,9 @@
           <a class="nav-link" >Inne kluby</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" >piłkarze</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" >Oferty</a>
         </li>
       </ul>
@@ -34,7 +37,9 @@
 
   <!-- Treść strony -->
   <div class="container">
-    <h1>aby przeglądać strone główną zaloguj się </h1>
+    <h1>aby przeglądać strone główną zaloguj się 
+      
+    </h1>
 
     <!-- Treść dla podstrony "Twój klub" -->
     <div id="twój-klub" class="subpage-content">
