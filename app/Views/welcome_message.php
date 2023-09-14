@@ -21,7 +21,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
+                    <a class="nav-link" href="">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -39,7 +39,7 @@
                       </button>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
-                               <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
+                               <a class="dropdown-item" href="<?= site_url('login') ?>">zaloguj</a>
   </div>
                 </li>
             </ul>
