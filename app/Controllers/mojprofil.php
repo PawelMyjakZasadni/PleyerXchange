@@ -21,6 +21,19 @@ public function index()
             $data['email'] = '';
         }
 
+        
+    
+    $session = session();
+    $autoryzacja = $session->get('autoryzacja');
+
+    if ($autoryzacja != 1)
+    {
+        return redirect()->to('SessionController/clearSession');
+
+    }
+    else 
+    {
         return view('profil/index', $data);
     }
+}
 }

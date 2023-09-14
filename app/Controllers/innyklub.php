@@ -2,20 +2,34 @@
 
 namespace App\Controllers;
 
-use App\Models\wypisz;
+use App\Models\klub;
 use App\Controllers\BaseController;
 
 class innyklub extends BaseController
 {
     public function index()
     {
-        $daneModel = new wypisz();
-        $dane = $daneModel->findAll();
+        $session = session();
+        $autoryzacja = $session->get('autoryzacja');
 
-        $data = [
-            'dane' => $dane
-        ];
-
+        if ($autoryzacja != 1)
+        {
+            return redirect()->to('SessionController/clearSession');
+    
+        }
+       
+       
+          
+        
+         
+            $klub = new klub();
+            $data['club'] = $klub->findAll();
+            
         return view('innyklub/index', $data);
+
+
+
+
+        
     }
 }

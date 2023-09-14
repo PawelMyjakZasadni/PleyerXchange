@@ -48,7 +48,21 @@ class ofert extends BaseController
     }
         public function wofert()
      {
-     $daneModel = new ofertt();
+        $daneModel = new ofertt();
+        $session = session();
+     
+     $autoryzacja = $session->get('autoryzacja');
+
+     if ($autoryzacja != 1)
+     {
+         return redirect()->to('SessionController/clearSession');
+ 
+     }
+     
+     
+        
+     
+ 
 
      // Pobierz dane z bazy danych
      $dane = $daneModel->findAll();

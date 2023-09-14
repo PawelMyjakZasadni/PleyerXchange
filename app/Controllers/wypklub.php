@@ -16,6 +16,21 @@ class twojklub extends BaseController
             'count'=> $count
         ];
 
-        return view('welcome_message', $count);
+
+        $session = session();
+        $autoryzacja = $session->get('autoryzacja');
+    
+        if ($autoryzacja != 1)
+        {
+            return redirect()->to('SessionController/clearSession');
+    
+        }
+        else 
+        {
+            return view('welcome_message', $count);
+        }
+
+
+        
     }
 }

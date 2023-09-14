@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class klub extends Model
 {
-    protected $table = 'twojklub';
+    protected $table = 'club';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['rok_zalozenia', 'menedzer', 'pracownicy', 'pilkarze'];
+    protected $allowedFields = [ 'name_club','league'];
 }

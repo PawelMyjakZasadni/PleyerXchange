@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Controllers;
+use App\Models\players;
+use App\Controllers\BaseController;
+
+class AdminPlayers extends BaseController
+{
+
+public function index()
+{
+   
+    $players = new players();
+            $data['players'] = $players->findAll();
+            return view('players/index',$data);
+
+        
+    return view('AdminPlayers/index');
+
+   
+}
+}

@@ -34,8 +34,11 @@ class Login extends BaseController
                     $sessionData = [
                         'user_id' => $user['id'],
                         'email' => $user['email'],
+                        'uprwanienie'=> $user['uprawnienie'],
+                        'autoryzacja' => 1,
                         // Dodaj inne dane sesji, jeśli są potrzebne
                     ];
+                    session()->set('moje_dane', 'Wartość danych');
                     $session->set($sessionData);
 
                      // Przekierowanie po pomyślnym zalogowaniu

@@ -11,8 +11,9 @@
 </head>
 <body>
   <!-- Nawigacja -->
+ 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
+        <a class="navbar-brand"href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,28 +48,38 @@
         </div>
     </nav>
 
-    <div class="container">
+  <div class="container">
     <div class="row">
         <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-header">
-                    <h4> club data </h4>
+                    <h4> Players data </h4>
                 </div>
                 <div class="card-body">
                     <table class="table table table-bordered" id="mydatatable">
                         <thead>
                             <tr>
-                                <th>name_club</th>
-                                <th>league</th>
-                                
+                                <th>first_name</th>
+                                <th>last_name</th>
+                                <th>club</th>
+                                <th>age</th>
+                                <th>position</th>
+                                <th>price</th>
+                                <th>action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($club as $row) :?>
+                            <?php foreach($players as $row) :?>
                          <tr>
-                             <td><?= $row['name_club']   ?> </td>
-                             <td><?= $row['league']   ?> </td>
-                             
+                             <td><?= $row['first_name']   ?> </td>
+                             <td><?= $row['last_name']   ?> </td>
+                             <td><?= $row['club']   ?> </td>
+                             <td><?= $row['age']   ?> </td>
+                             <td><?= $row['position']   ?> </td>
+                             <td><?= $row['price']   ?> </td>
+                             <td>
+                                <a href="<?= base_url('AdminPlayers')?>" class=" btn btn-success btn-sm"> Edit</a></td>
+                                <a href="" class=" btn btn-danger btn-sm"> Delete</a></td>
                             
                         </tr>
                             <?php endforeach; ?>
@@ -79,7 +90,9 @@
         </div>
     </div>
   </div>
-    
+
+  
+  
  
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->

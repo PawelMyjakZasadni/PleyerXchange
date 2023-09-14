@@ -10,6 +10,18 @@ class twojklub extends BaseController
 {
     public function index()
     {
+        $session = session();
+        $autoryzacja = $session->get('autoryzacja');
+    
+        if ($autoryzacja != 1)
+        {
+            return redirect()->to('SessionController/clearSession');
+    
+        }
+        else 
+        {
+            return view('twojklub/index');
+        }
         if ($this->request->getMethod() === 'post') {
             // Walidacja danych wejściowych
             $validation = \Config\Services::validation();
@@ -39,6 +51,7 @@ class twojklub extends BaseController
                 $data['validation'] = $validation->getErrors();
             }
         }
-        return view('twojklub/index');
+       
+       
     }
 }

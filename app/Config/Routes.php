@@ -38,8 +38,15 @@ $routes->get('wypiszklub/edytcja/(:num)', 'wypiszklub::edycja/$1');
 $routes->get('ofert/wofert/', 'ofert::wofert');
 $routes->get('ofert/edit/(:num)', 'ofert::edit/$1');
 
+$routes->get('AdminPlayers', 'AdminPlayers::index');
+
 // players data
 $routes->get('players','playerscontroller::index');
+
+$routes->get('session', 'SessionController::index');
+$routes->get('clear-session', 'SessionController::clearSession');
+$routes->get('SessionController/clearSession', 'SessionController::clearSession');
+
 
 /*
  * --------------------------------------------------------------------

@@ -1,3 +1,8 @@
+<?php
+
+$session = \Config\Services::session();
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,11 +12,14 @@
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+  
+
 </head>
 <body>
   <!-- Nawigacja -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,53 +52,26 @@
   </div>
                 </li>
             </ul>
+           
         </div>
     </nav>
 
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h4> club data </h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table table-bordered" id="mydatatable">
-                        <thead>
-                            <tr>
-                                <th>name_club</th>
-                                <th>league</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($club as $row) :?>
-                         <tr>
-                             <td><?= $row['name_club']   ?> </td>
-                             <td><?= $row['league']   ?> </td>
-                             
-                            
-                        </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+
+  <!-- Treść strony -->
+  <div class="container">
+    witamy w panelu admina 
+
+
+
+
+
   </div>
-    
- 
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script>
-      $(document).ready(function() {
-        $('#mydatatable').DataTable();
-      })
-  </script>
 </body>
 </html>
