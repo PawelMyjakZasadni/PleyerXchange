@@ -67,7 +67,7 @@ $session = \Config\Services::session();
         <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-header">
-                    <h4> oferty  <a href="<?php echo site_url(''); ?>" class="btn btn-primary float-right">oferta zrób</a> </h4>
+                    <h4> oferty  <a href="<?php echo site_url('ofert-add'); ?>" class="btn btn-primary float-right">oferta zrób</a> </h4>
                    
                 </div>
                 <div class="card-body">

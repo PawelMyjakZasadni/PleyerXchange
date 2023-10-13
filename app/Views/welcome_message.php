@@ -39,7 +39,7 @@
                       </button>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
-                               <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
+                               <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">zaloguj</a>
   </div>
                 </li>
             </ul>
