@@ -31,6 +31,7 @@ public function index()
            'email' => $email
         ]);
     }
-  
 }
+
+    
 }

@@ -11,8 +11,9 @@
 </head>
 <body>
   <!-- Nawigacja -->
+ 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
+        <a class="navbar-brand"href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +23,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('yours_clab') ?>">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -31,7 +32,7 @@
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -44,37 +45,75 @@
   </div>
                 </li>
             </ul>
-           
         </div>
     </nav>
 
+ 
     <div class="container">
     <div class="row">
         <div class="col-md-12 mt-5">
             <div class="card">
-                <div class="card-header">
-                    <h4> club data </h4>
-                </div>
+            <h4> edit club 
+            <a href="<?= base_url('AdminPanel') ?>" class="btn btn-danger float-right" > back</a>
+        </h4>
                 <div class="card-body">
-                    <table class="table table table-bordered" id="mydatatable">
-                        <thead>
-                            <tr>
-                                <th>name_club</th>
-                                <th>league</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($club as $row) :?>
-                         <tr>
-                             <td><?= $row['name_club']   ?> </td>
-                             <td><?= $row['league']   ?> </td>
-                             
-                            
-                        </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                <form action="<?=base_url('AdminPanel/updateP/'.$players['id']) ?>" method="POST">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label> first_name</label>
+                                 <input type="text" name="first_name" value="<?=$players['first_name'] ?> " class="form-control" placeholder="first_name club">
+           
+                             </div>
+                        </div>
+                      <div class="col-md-6 mb-3">
+                          <div class="form-group">
+                             <label> last_name</label>
+                               <input type="text" name="last_name"  value="<?=$players['last_name'] ?>" class="form-control" placeholder="last_name">
+           
+                              </div>
+                             </div>
+                     
+                         <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label> club</label>
+                                 <input type="text" name="club" value="<?=$players['club'] ?> " class="form-control" placeholder="club">
+           
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label> age</label>
+                                 <input type="text" name="age" value="<?=$players['age'] ?> " class="form-control" placeholder="age">
+           
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label> position</label>
+                                 <input type="text" name="position" value="<?=$players['position'] ?> " class="form-control" placeholder="position">
+           
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group mb-3">
+                            <label> price</label>
+                                 <input type="text" name="price" value="<?=$players['price'] ?> " class="form-control" placeholder="price">
+           
+                             </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                     <div class="form-group">
+                              <button type="submit" class="ntm btn-primary px-4" > edit Players</button>
+                          </div>
+            
+                         </div>
+
+
+</div>
+</form>
+
                 </div>
             </div>
         </div>
@@ -85,7 +124,9 @@
             <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
-    
+
+  
+  
  
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->

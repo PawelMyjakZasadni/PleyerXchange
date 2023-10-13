@@ -1,0 +1,1 @@
+wystąpił problem przesze sie skontaktować z administatorem strny 

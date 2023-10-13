@@ -12,6 +12,7 @@ $session = \Config\Services::session();
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   
 
 </head>
@@ -30,7 +31,7 @@ $session = \Config\Services::session();
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('yours_clab') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -39,7 +40,7 @@ $session = \Config\Services::session();
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -60,30 +61,61 @@ $session = \Config\Services::session();
 
 
   <!-- Treść strony -->
-  <div class="container">
-    <h1>o witamy zalogowy urzytkowniku</h1>
+   <!-- Główny kontener strony -->
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Sekcja z notowaniami -->
+            <section>
+                <h1>Notowania</h1>
+                <!-- Tabela z notowaniami -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nazwa Piłkarza</th>
+                          
+                            <th>Cena</th>
+                            <th>Zmiana</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>imie </td>
+                            
+                            <td>100.00</td>
+                            <td>+1.50%</td>
+                        </tr>
+                        <!-- Dodaj więcej wierszy z notowaniami -->
+                    </tbody>
+                </table>
+            </section>
 
-    <!-- Treść dla podstrony "Twój klub" -->
-    <div id="twój-klub" class="subpage-content">
-      <h2>Twój klub</h2>
-      <p> stwórz twój klub <button><a class="nav-link" href="<?= site_url('twojklub') ?>">Twój klub</a></button> </p>
-    </div>
+            <!-- Sekcja z wykresami -->
+            <section>
+                <h1>Wykresy</h1>
+              
 
-    <!-- Treść dla podstrony "Inne kluby" -->
-    <div id="inne-kluby" class="subpage-content">
-      <h2>Inne kluby</h2>
-      <p>Tutaj znajduje się ilość klubów w serwisie  5   </p>
-    </div>
 
-    <!-- Treść dla podstrony "Oferty" -->
-    <div id="oferty" class="subpage-content">
-      <h2>Oferty</h2>
-      <p><p> stwórz oferte  <button><a class="nav-link" href="<?= site_url('ofert') ?>">craeate ofert </a></button> </p></p>
-    </div>
 
-    <div>
-          <h2>Najdroszy piłkarz </h2>
-          <?php 
+
+
+
+
+                <!-- Dodaj wykresy, na przykład wykresy liniowe lub słupkowe, używając bibliotek takich jak Chart.js -->
+                <canvas id="lineChart" width="400" height="200"></canvas>
+                <canvas id="barChart" width="400" height="200"></canvas>
+            </section>
+        </div>
+
+        <!-- Sekcja z aktualnościami -->
+        <div class="col-lg-4">
+            <section>
+                <h2>Aktualności</h2>
+                <!-- Lista najnowszych aktualności -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5>Najdroszy piłkarz</h5>
+                        <p> <?php 
           $db = db_connect();
     // Wykonaj zapytanie SQL
 $query = $db->query('SELECT players.first_name, players.last_name, players.price FROM players ORDER BY players.price DESC LIMIT 1');
@@ -109,13 +141,11 @@ if ($query) {
 } else {
     echo "Błąd zapytania SQL: " . $this->$db->error();
 }
-?>
-    </div>
-    <div>
-      <h2>najdroszy klub </h2>
-
-
-      <?php 
+?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>najdroszy klub </h5>
+                        <p>   <?php 
           $db = db_connect();
     // Wykonaj zapytanie SQL
 $query = $db->query('SELECT club.name_club, SUM(players.price) AS total_price FROM club JOIN players ON club.id = players.club GROUP BY club.name_club ORDER BY total_price DESC LIMIT 1');
@@ -139,12 +169,20 @@ if ($query) {
 } else {
     echo "Błąd zapytania SQL: " . $this->$db->error();
 }
-?>
-
-
+?></p>
+                    </li>
+                    <!-- Dodaj więcej aktualności -->
+                </ul>
+            </section>
+        </div>
     </div>
-  </div>
-
+</div>
+ <!-- Stopka -->
+ <footer class="bg-dark text-light py-3 fixed-bottom">
+        <div class="container">
+            <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

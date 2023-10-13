@@ -1,3 +1,8 @@
+<?php
+
+$session = \Config\Services::session();
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -8,10 +13,14 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+  
+
 </head>
 <body>
   <!-- Nawigacja -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +31,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('yours_clab') ?>">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -31,7 +40,7 @@
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -48,45 +57,79 @@
         </div>
     </nav>
 
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h4> club data </h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table table-bordered" id="mydatatable">
-                        <thead>
-                            <tr>
-                                <th>name_club</th>
-                                <th>league</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($club as $row) :?>
-                         <tr>
-                             <td><?= $row['name_club']   ?> </td>
-                             <td><?= $row['league']   ?> </td>
-                             
-                            
-                        </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+
+
+
+  <!-- Treść strony -->
+  <div class="container">
+    witamy w panelu admina 
+  
+    <div class="card-body">
+        <h4> add club 
+            <a href="<?= base_url('AdminPanel') ?>" class="btn btn-danger float-right" > back</a>
+        </h4>
+        <?php
+            if(session()->getflashdata('status'))
+            {
+                echo "<h4>".session()->getFlashdata('status')."</h4>";
+            }
+        ?>
+        <form action="<?=base_url('AdminPanel-storeP') ?>" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label> first_name</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="first_name">
+                   
                 </div>
             </div>
-        </div>
-    </div>
-  </div>
-  <footer class="bg-dark text-light py-3 fixed-bottom">
-        <div class="container">
-            <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
-        </div>
-    </footer>
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> last_name</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="last_name">
+                   
+                </div>
+            </div>
+
+                <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> club</label>
+                    <input type="text" name="club" class="form-control" placeholder="club">
+                   
+                </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> age</label>
+                    <input type="text" name="age" class="form-control" placeholder="age">
+                   
+                </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> position</label>
+                    <input type="text" name="position" class="form-control" placeholder="position">
+                   
+                </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> prisce</label>
+                    <input type="number" name="price" class="form-control" placeholder="prisce">
+                   
+                </div>
+                </div>
+            </div>
+                <div class="col-md-12 mb-3">
+                <div class="form-group">
+                        <button type="submit" class="ntm btn-primary px-4" > save players</button>
+                           </div>
+                    
+                         </div>
+       
     
- 
+        </div>
+  </form>
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -98,5 +141,6 @@
         $('#mydatatable').DataTable();
       })
   </script>
+ 
 </body>
 </html>

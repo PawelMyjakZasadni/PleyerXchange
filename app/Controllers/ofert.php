@@ -1,79 +1,54 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\offers;
 
-use App\Models\ofertt;
 use App\Controllers\BaseController;
 class ofert extends BaseController
 {
     public function index()
     {
-        $data = [];
+        $offers = new offers();
+        $data['offers'] = $offers->findAll(); // Zmiana nazwy zmiennej $club na $clubs
+    
+       
 
-        if ($this->request->getMethod() === 'post') {
-            // Walidacja danych wejściowych
-            $validation = \Config\Services::validation();
-            $validation->setRules([
-                'club_name' => 'required',
-                'manager' => 'required',
-                'price' => 'required',
-                'rental_period' => 'required',
-                'submitter' => 'required'
-            ]);
 
-            if ($validation->withRequest($this->request)->run()) {
-                // Pomyślna walidacja, zapisujemy ofertę w bazie danych
-                $offerModel = new ofertt();
+        return view('ofert/index',$data);
 
-                $data = [
-                    'club_name' => $this->request->getPost('club_name'),
-                    'manager' => $this->request->getPost('manager'),
-                    'price' => $this->request->getPost('price'),
-                    'rental_period' => $this->request->getPost('rental_period'),
-                    'submitter' => $this->request->getPost('submitter')
-                ];
-
-                $offerModel->insert($data);
-
-                // Przekierowanie po zapisaniu oferty
-                return redirect()->to('/sesja');
-            } else {
-                // Błąd walidacji, przekazujemy błędy do widoku
-                $data['validation'] = $validation->getErrors();
-            }
-        }
-
-        // Wyświetlenie formularza składania oferty
-        return view('ofert/index', $data);
+       
     }
-        public function wofert()
-     {
-        $daneModel = new ofertt();
-        $session = session();
-     
-     $autoryzacja = $session->get('autoryzacja');
-
-     if ($autoryzacja != 1)
-     {
-         return redirect()->to('SessionController/clearSession');
- 
-     }
-     
-     
-        
-     
- 
-
-     // Pobierz dane z bazy danych
-     $dane = $daneModel->findAll();
-
-     $data['dane'] = $dane;
-
-        return view('ofert/wofert', $data); 
-    }
-
-    public function edit()
+    public function create()
     {
-       return view('ofert/dosc'); 
-   }
+        return view('ofert/create');
+    }
+
+    public function store()
+    {
+        $offers = new offers();
+       $data = [
+           'id_user' => $this->request->getPost('id_user'),
+           'Cost' => $this->request->getPost('Cost'),
+       ];
+       $offers->save($data);
+       return redirect()->to(base_url('index.php/ofert'))->with('status','klub added successfuly');
+   
+    }
+    public function delete($id)
+{
+    $offers = new offers();
+    $offers->delete($id);
+    return redirect()->to(base_url('index.php/ofert'));
+
+}
+//public function index()
+//{
+//    $session = session();
+   // $user_id = $session->get('user_id');
+  //  $offers = new offers();
+//$data['offers'] = $offers->where('id_user', $user_id)->findAll(); // Użyj metody findAll() aby pobrać wyniki zapytania
+
+
+   // return view('ofert/index', $data);
+//}
 }

@@ -11,7 +11,7 @@
   <!-- Nawigacja -->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href=<?= site_url('Home') ?>>Moja Strona</a>
+        <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,7 +21,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('yours_clab') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -30,7 +30,7 @@
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -39,37 +39,69 @@
                       </button>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="<?= site_url('mojprofil') ?>">Mój profil</a>
-                               <a class="dropdown-item" href="<?= site_url('login') ?>">zaloguj</a>
+                               <a class="dropdown-item" href="<?= site_url('wyloguj') ?>">Wyloguj</a>
   </div>
                 </li>
             </ul>
+           
         </div>
     </nav>
 
-  <!-- Treść strony -->
-  <div class="container">
-    <h1>aby przeglądać strone główną zaloguj się 
-      
-    </h1>
+ <!-- Główny kontener strony -->
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Sekcja z notowaniami -->
+            <section>
+                <h1>Notowania</h1>
+                <!-- Tabela z notowaniami -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nazwa Piłkarza</th>
+                          
+                            <th>Cena</th>
+                            <th>Zmiana</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>imie </td>
+                            
+                            <td>100.00</td>
+                            <td>+1.50%</td>
+                        </tr>
+                        <!-- Dodaj więcej wierszy z notowaniami -->
+                    </tbody>
+                </table>
+            </section>
 
-    <!-- Treść dla podstrony "Twój klub" -->
-    <div id="twój-klub" class="subpage-content">
-      <h2>Twój klub</h2>
-      <p> </p>
-    </div>
 
-    <!-- Treść dla podstrony "Inne kluby" -->
-    <div id="inne-kluby" class="subpage-content">
-      <h2>Inne kluby</h2>
-      <p>Tutaj znajduje się ilość klubów w serwisie  4   </p>
+        <!-- Sekcja z aktualnościami -->
+        <div class="col-lg-4">
+            <section>
+                <h2>Aktualności</h2>
+                <!-- Lista najnowszych aktualności -->
+                <ul class="list-group">
+                 <?php foreach ($newsItems as $newsItem): ?>
+                    <li class="list-group-item">
+                        <h2><?= $newsItem['title']; ?></h2>
+                        <p><?= $newsItem['content']; ?></p>
+                <?php endforeach; ?></p>
+                    </li>
+                    <!-- Dodaj więcej aktualności -->
+                </ul>
+            </section>
+        </div>
     </div>
+</div>
 
-    <!-- Treść dla podstrony "Oferty" -->
-    <div id="oferty" class="subpage-content">
-      <h2>Oferty</h2>
-      <p>aby były ofertyy zzaloguj się .</p>
-    </div>
-  </div>
+    <!-- Stopka -->
+    <footer class="bg-dark text-light py-3 fixed-bottom">
+        <div class="container">
+            <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

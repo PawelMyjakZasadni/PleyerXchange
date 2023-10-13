@@ -1,3 +1,8 @@
+<?php
+
+$session = \Config\Services::session();
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,11 +12,14 @@
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+
 </head>
 <body>
   <!-- Nawigacja -->
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +30,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -31,7 +39,7 @@
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -44,44 +52,65 @@
   </div>
                 </li>
             </ul>
+           
         </div>
     </nav>
 
 
-    <h1>Wypisanie danych</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>clob_name</th>
-                <th>Manager</th>
-                <th>price</th>
-                <th>rental_period</th>
-                <th>submitter</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($dane as $row): ?>
-            <tr>
-                <th><?= $row['id'] ?></th>
-                <td><?= $row['club_name'] ?></td>
-                <td><?= $row['manager'] ?></td>
-                <td><?= $row['price'] ?></td>
-                <td><?= $row['rental_period'] ?></td>
-                <td><?= $row['submitter'] ?></td>
-                <td>
-                    <a href="<?= site_url('ofert/edit/' . $row['id']) ?>">Edytuj</a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 
 
- 
+  <!-- Treść strony -->
+   <!-- Główny kontener strony -->
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4> yours Players  
 
+                    <a href="<?= base_url('yours_clab-add') ?>" class="btn btn-primary float-right" > add players</a>
+                    </h4>
+                    <?php
+            if(session()->getflashdata('status'))
+            {
+                echo "<h4>".session()->getFlashdata('status')."</h4>";
+            }
+        ?>
+                </div>
+                <div class="card-body">
+                    <table class="table table table-bordered" id="mydatatable">
+                        <thead>
+                            <tr>
+                            <th>id</th>
+                                <th>players</th>
+                                <th>pozycja</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($yours_clab as $row) :?>
+                         <tr>
+                         <td><?= $row['id']   ?> </td>
+                             <td><?= $row['players']   ?> </td>
+                             <td><?= $row['pozycja']   ?> </td>
+                             <td>
+                              <a href="<?= site_url('yours_clab/delete/'.$row['id']) ?>" class="btn btn-danger btn-sm">Delete</a>
+                             </td>
+                        </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+ <!-- Stopka -->
+ <footer class="bg-dark text-light py-3 fixed-bottom">
+        <div class="container">
+            <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

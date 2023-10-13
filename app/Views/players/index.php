@@ -11,9 +11,8 @@
 </head>
 <body>
   <!-- Nawigacja -->
- 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand"href=<?= site_url('sesja') ?>>Moja Strona</a>
+        <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +22,7 @@
                     <a class="nav-link" href=<?= site_url('sesja') ?>>Strona Główna <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= site_url('wypiszklub') ?>">Twój klub</a>
+                    <a class="nav-link" href="<?= site_url('yours_clab') ?>">Twój klub</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('innyklub') ?>">Inne kluby</a>
@@ -32,7 +31,7 @@
                     <a class="nav-link"  href="<?= site_url('players') ?>" >piłkarze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="<?= site_url('ofert/wofert') ?>">Oferty</a>
+                    <a class="nav-link"  href="<?= site_url('ofert') ?>">Oferty</a>
                 </li>
                 <li>
                 <div class="dropdown ml-auto">
@@ -45,6 +44,7 @@
   </div>
                 </li>
             </ul>
+           
         </div>
     </nav>
 
@@ -86,6 +86,11 @@
         </div>
     </div>
   </div>
+  <footer class="bg-dark text-light py-3 fixed-bottom">
+        <div class="container">
+            <p class="text-center">&copy; 2023 Giełda. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
 
   
   

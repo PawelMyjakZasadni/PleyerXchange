@@ -4,9 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ofertt extends Model
+class offers extends Model
 {
     protected $table = 'offers';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['club_name', 'manager', 'price', 'rental_period', 'submitter'];
+    protected $allowedFields = [
+    'id_user',
+    'Cost',
+    
+   ];
 }

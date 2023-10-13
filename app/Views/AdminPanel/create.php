@@ -1,3 +1,8 @@
+<?php
+
+$session = \Config\Services::session();
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,12 +12,15 @@
   <!-- Dodaj link do CSS Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+  
+
 </head>
 <body>
   <!-- Nawigacja -->
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href=<?= site_url('sesja') ?>>Moja Strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,50 +53,64 @@
   </div>
                 </li>
             </ul>
+           
         </div>
     </nav>
 
+
+
+
+  <!-- Treść strony -->
   <div class="container">
-    <h1>Formularz</h1>
-    <form action="<?= site_url('twojklub') ?>" method="post">
-    <div class="mb-3">
-        <label for="rokZalozenia">Rok założenia:</label>
-        <input type="number" class="form-control" id="rok_zalozenia" name="rok_zalozenia" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="menedzer">Menedżer:</label>
-        <input type="text" class="form-control" id="menedzer" name="menedzer" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-    <label for="pracownicy">Pracownicy:</label>
-        <input type="text" class="form-control" id="pracownicy" name="pracownicy" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    <div class="mb-3">
-         <label for="pilkarze">Piłkarze:</label>
-        <input type="text" class="form-control" id="pilkarze" name="pilkarze" required>
-        <div class="invalid-feedback">
-            Pole jest wymagane.
-        </div>
-    </div>
-    </div>
-      <button type="submit" class="btn btn-primary">Zapisz</button>
-    </form>
-  </div>
+    witamy w panelu admina 
   
- 
+    <div class="card-body">
+        <h4> add club 
+            <a href="<?= base_url('AdminPanel') ?>" class="btn btn-danger float-right" > back</a>
+        </h4>
+        <?php
+            if(session()->getflashdata('status'))
+            {
+                echo "<h4>".session()->getFlashdata('status')."</h4>";
+            }
+        ?>
+        <form action="<?=base_url('AdminPanel-store') ?>" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label> klub</label>
+                    <input type="text" name="name_club" class="form-control" placeholder="name club">
+                   
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                <label> leguea</label>
+                    <input type="text" name="league" class="form-control" placeholder="liguea">
+                   
+                </div>
+            </div>
+                <div class="col-md-12 mb-3">
+                <div class="form-group">
+                        <button type="submit" class="ntm btn-primary px-4" > save club</button>
+                           </div>
+                    
+                         </div>
+       
+    
+        </div>
+  </form>
 
   <!-- Dodaj skrypty Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+      $(document).ready(function() {
+        $('#mydatatable').DataTable();
+      })
+  </script>
+ 
 </body>
 </html>
